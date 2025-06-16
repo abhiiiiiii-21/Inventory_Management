@@ -3,39 +3,42 @@ import dayjs from "dayjs";
 import Sidebar from "../../sidebar/sideBar";
 import Navbar from "../../navBar/nav";
 import { Pencil, Trash2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Added_Items = () => {
   const today = dayjs();
+  const navigate = useNavigate();
+
   const [filter, setFilter] = useState("");
   const [items, setItems] = useState([
     {
-      id: 1,
-      sku: "MILK",
-      description: "Full Cream Milk",
-      uom: "Litres",
-      shelfLife: "5 days",
-      batch: "BATCH-001",
-      weight: 1000,
-      leadTime: "3 days",
-      safetyStock: 100,
-      currentStock: 500,
-      expiry: "2025-06-05",
-    },
-    {
-      id: 2,
-      sku: "SUGAR",
-      description: "Refined Sugar",
-      uom: "Kg",
+      id: 4,
+      sku: "CHOCO-ICE",
+      description: "Chocolate Ice Cream",
+      uom: "Units",
       shelfLife: "365 days",
-      batch: "BATCH-002",
-      weight: 1000,
-      leadTime: "2 days",
-      safetyStock: 200,
-      currentStock: 300,
-      expiry: "2026-05-31",
+      batch: "BATCH-001",
+      weight: 500,
+      leadTime: "6 days",
+      safetyStock: 90,
+      currentStock: 120,
+      expiry: "2025-08-15",
     },
     {
       id: 3,
+      sku: "COCOA",
+      description: "Cocoa Powder",
+      uom: "Kg",
+      shelfLife: "180 days",
+      batch: "BATCH-002",
+      weight: 1200,
+      leadTime: "5 days",
+      safetyStock: 150,
+      currentStock: 170,
+      expiry: "2025-10-01",
+    },
+    {
+      id: 2,
       sku: "CREAM",
       description: "Fresh Cream",
       uom: "Litres",
@@ -48,30 +51,30 @@ const Added_Items = () => {
       expiry: "2025-06-25",
     },
     {
-      id: 4,
-      sku: "COCOA",
-      description: "Cocoa Powder",
-      uom: "Kg",
-      shelfLife: "180 days",
+      id: 0,
+      sku: "MILK",
+      description: "Full Cream Milk",
+      uom: "Litres",
+      shelfLife: "5 days",
       batch: "BATCH-004",
-      weight: 1200,
-      leadTime: "5 days",
-      safetyStock: 150,
-      currentStock: 170,
-      expiry: "2025-10-01",
+      weight: 1000,
+      leadTime: "3 days",
+      safetyStock: 100,
+      currentStock: 500,
+      expiry: "2025-06-05",
     },
     {
-      id: 5,
-      sku: "CHOCO-ICE",
-      description: "Chocolate Ice Cream",
-      uom: "Units",
+      id: 1,
+      sku: "SUGAR",
+      description: "Refined Sugar",
+      uom: "Kg",
       shelfLife: "365 days",
       batch: "BATCH-005",
-      weight: 500,
-      leadTime: "6 days",
-      safetyStock: 90,
-      currentStock: 120,
-      expiry: "2025-08-15",
+      weight: 1000,
+      leadTime: "2 days",
+      safetyStock: 200,
+      currentStock: 300,
+      expiry: "2026-05-31",
     }
   ]);
 
@@ -106,13 +109,26 @@ const Added_Items = () => {
               <input
                 type="text"
                 placeholder="🔍 Search by SKU or Description"
-                className="w-72 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white shadow-sm text-sm"
+                className="w-3xl px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white shadow-sm text-sm"
                 onChange={(e) => setFilter(e.target.value)}
               />
             </div>
             <div className="flex justify-end">
-              <button className="bg-[#1447E6] hover:bg-[#0e34b1] text-white px-6 py-2 rounded-lg text-sm font-semibold shadow">
-                + Add More Items
+              <button
+                onClick={() => navigate("/item-master/add-item")}
+                className="flex items-center gap-2 bg-[#1447E6] hover:bg-[#0f3bd0] text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-md transition-all duration-200"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4 font-bold"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={3}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                </svg>
+                Add More Items
               </button>
             </div>
           </div>
@@ -121,7 +137,7 @@ const Added_Items = () => {
             <table className="min-w-full text-sm">
               <thead className="bg-[#1447E6] text-white text-xs uppercase tracking-wider">
                 <tr>
-                  {["SKU", "Description", "UOM", "Shelf Life", "Batch", "Weight", "Lead Time", "Safety", "Stock", "Expiry", "Status", "Action"].map((title, i) => (
+                  {["Batch", "SKU", "Description", "UOM", "Weight", "Shelf Life", "Lead Time", "Safety", "Stock", "Expiry", "Status", "Action"].map((title, i) => (
                     <th key={i} className="px-5 py-3 text-left font-semibold">
                       {title}
                     </th>
@@ -146,12 +162,12 @@ const Added_Items = () => {
                           isLow ? "bg-red-50" : "bg-white"
                         }`}
                       >
+                        <td className="px-5 py-3">{item.batch}</td>
                         <td className="px-5 py-3 font-medium">{item.sku}</td>
                         <td className="px-5 py-3">{item.description}</td>
                         <td className="px-5 py-3">{item.uom}</td>
-                        <td className="px-5 py-3">{item.shelfLife}</td>
-                        <td className="px-5 py-3">{item.batch}</td>
                         <td className="px-5 py-3">{item.weight}</td>
+                        <td className="px-5 py-3">{item.shelfLife}</td>
                         <td className="px-5 py-3">{item.leadTime}</td>
                         <td className="px-5 py-3">{item.safetyStock}</td>
                         <td className={`px-5 py-3 font-bold ${isLow ? "text-red-600" : ""}`}>{item.currentStock}</td>
