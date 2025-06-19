@@ -17,13 +17,13 @@ const AddCategory = () => {
   ]);
   const [name, setName] = useState("");
 
-  /* ---------- helpers ---------- */
+
   const isDuplicate = (test, skipIdx = -1) =>
     categories.some(
       (cat, i) => i !== skipIdx && cat.toLowerCase() === test.toLowerCase()
     );
 
-  /* ---------- add ---------- */
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const trimmed = name.trim();
@@ -78,27 +78,16 @@ const AddCategory = () => {
                 <label className="block text-sm font-medium text-gray-600 mb-1">
                   Category Name
                 </label>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Enter category name"
-                  className="w-full rounded-lg border-gray-300 px-4 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
-                />
+                <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter category name" className="w-full rounded-lg border-gray-300 px-4 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"/>
               </div>
-              <button
-                type="submit"
-                className="w-32 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 active:scale-95 transition"
-              >
-                Submit
-              </button>
+              <button type="submit" className="w-32 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 active:scale-95 transition">Submit</button>
             </form>
           </div>
 
           {/* ---------------------- table ---------------------- */}
           <div className="bg-white shadow rounded-2xl overflow-x-auto">
             <table className="min-w-full text-sm">
-              <thead className="bg-gray-50 uppercase text-gray-600 text-xs font-semibold tracking-wider">
+              <thead className="bg-[#1447E6] uppercase text-white text-xs font-semibold tracking-wider">
                 <tr>
                   <th className="px-6 py-3 text-left">S.No</th>
                   <th className="px-6 py-3 text-left">Category Name</th>

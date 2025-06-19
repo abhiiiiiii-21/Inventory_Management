@@ -9,7 +9,7 @@ const LogIn = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    if (email === 'admin@example.com' && password === '123456') {
+    if (email === 'admin@gmail.com' && password === '123456') {
       navigate('/dashboard');
     } else {
       alert('Invalid credentials');
@@ -33,26 +33,12 @@ const LogIn = () => {
           <form className="space-y-5" onSubmit={handleLogin}>
             <div>
               <label className="block text-gray-700 font-medium mb-1">Email</label>
-              <input
-                type="email"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none placeholder-gray-400"
-                required
-              />
+              <input type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none placeholder-gray-400" required />
             </div>
 
             <div>
               <label className="block text-gray-700 font-medium mb-1">Password</label>
-              <input
-                type="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none placeholder-gray-400"
-                required
-              />
+              <input type="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none placeholder-gray-400" required />
             </div>
 
             <div className="flex items-center justify-between text-sm text-gray-600">
@@ -63,32 +49,28 @@ const LogIn = () => {
               <a href="#" className="text-blue-600 hover:underline">Forgot password?</a>
             </div>
 
-            <button
-              type="submit"
-              className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition duration-200"
-            >
-              Sign in
-            </button>
+            <div>
+              <button type="submit" className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition duration-200" >
+                Sign in
+              </button>
 
-            <button
-              type="button"
-              className="w-full py-3 border border-gray-300 flex items-center justify-center gap-3 rounded-lg hover:bg-gray-50 transition duration-200"
-            >
-              <img
-                src="https://www.svgrepo.com/show/475656/google-color.svg"
-                alt="Google"
-                className="h-5 w-5"
-              />
-              Continue with Google
-            </button>
+              <div className="flex items-center my-6">
+                <div className="flex-grow h-px bg-gray-300"></div>
+                <span className="px-4 text-sm text-gray-500 font-medium">or</span>
+                <div className="flex-grow h-px bg-gray-300"></div>
+              </div>
+
+              <button type="button" className="w-full py-3 border border-gray-300 flex items-center justify-center gap-3 rounded-lg hover:bg-gray-100 transition duration-200">
+                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="h-5 w-5" />
+                <span className="text-sm font-medium text-gray-700">Continue with Google</span>
+              </button>
+            </div>
+            
           </form>
 
           <p className="text-sm text-center text-gray-600 mt-6">
             Don't have an account?{" "}
-            <span
-              onClick={() => navigate('/signup')}
-              className="text-blue-600 hover:underline cursor-pointer"
-            >
+            <span onClick={() => navigate('/signup')} className="text-blue-600 hover:underline cursor-pointer">
               Sign Up
             </span>
           </p>

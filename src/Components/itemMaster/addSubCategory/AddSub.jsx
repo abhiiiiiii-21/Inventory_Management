@@ -167,7 +167,7 @@ const AddSubCategory = () => {
           {/* ---------------------- Table ---------------------- */}
           <div className="bg-white shadow rounded-2xl overflow-x-auto">
             <table className="min-w-full text-sm">
-              <thead className="bg-gray-50 uppercase text-gray-600 text-xs font-semibold tracking-wider">
+              <thead className="bg-[#1447E6] uppercase text-white text-xs font-semibold tracking-wider">
                 <tr>
                   <th className="px-6 py-3 text-left">S.No</th>
                   <th className="px-6 py-3 text-left">Category Name</th>
@@ -175,19 +175,14 @@ const AddSubCategory = () => {
                   <th className="px-6 py-3 text-center w-28">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-100">
-                {subCategories.map((entry, idx) => (
+              <tbody className="divide-y divide-gray-100">{subCategories.map((entry, idx) => (
                   <tr key={idx} className="hover:bg-gray-50">
                     <td className="px-6 py-3">{idx + 1}</td>
                     <td className="px-6 py-3">{entry.category}</td>
                     <td className="px-6 py-3">{entry.sub}</td>
                     <td className="px-6 py-3">
                       <div className="flex justify-center gap-4">
-                        <button
-                          onClick={() => handleEdit(idx)}
-                          title="Edit"
-                          className="p-1 rounded hover:bg-gray-200 transition"
-                        >
+                        <button onClick={() => handleEdit(idx)} title="Edit" className="p-1 rounded hover:bg-gray-200 transition">
                           <Pencil className="w-5 h-5 text-blue-600" />
                         </button>
                         <button
@@ -199,8 +194,7 @@ const AddSubCategory = () => {
                         </button>
                       </div>
                     </td>
-                  </tr>
-                ))}
+                  </tr>))}
               </tbody>
             </table>
           </div>
