@@ -35,10 +35,10 @@ const Added_Items = () => {
 
   const headerMenu = function () {
     const menu = [];
-
     this.getColumns().forEach((column) => {
       const container = document.createElement("div");
-      container.className = "flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer";
+      container.className =
+        "flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer";
 
       const checkbox = document.createElement("input");
       checkbox.type = "checkbox";
@@ -60,7 +60,6 @@ const Added_Items = () => {
 
       menu.push({ label: container });
     });
-
     return menu;
   };
 
@@ -138,18 +137,19 @@ const Added_Items = () => {
         },
       ],
       columns: [
-        { title: "SKU", field: "sku", headerMenu },
-        { title: "Description", field: "description", headerMenu },
-        { title: "UOM", field: "uom", hozAlign: "center", headerMenu },
-        { title: "Shelf Life", field: "shelfLife", hozAlign: "center", headerMenu },
-        { title: "Batch", field: "batch", headerMenu },
-        { title: "Weight", field: "weight", hozAlign: "right", headerMenu },
-        { title: "Lead Time", field: "leadTime", hozAlign: "center", headerMenu },
-        { title: "Safety Stock", field: "safetyStock", hozAlign: "right", headerMenu },
-        { title: "Current Stock", field: "currentStock", hozAlign: "right", headerMenu },
+        { title: "SKU", field: "sku", sorter: "string", headerMenu },
+        { title: "Description", field: "description", sorter: "string", headerMenu },
+        { title: "UOM", field: "uom", sorter: "string", hozAlign: "center", headerMenu },
+        { title: "Shelf Life", field: "shelfLife", sorter: "string", hozAlign: "center", headerMenu },
+        { title: "Batch", field: "batch", sorter: "string", headerMenu },
+        { title: "Weight", field: "weight", sorter: "number", hozAlign: "right", headerMenu },
+        { title: "Lead Time", field: "leadTime", sorter: "string", hozAlign: "center", headerMenu },
+        { title: "Safety Stock", field: "safetyStock", sorter: "number", hozAlign: "right", headerMenu },
+        { title: "Current Stock", field: "currentStock", sorter: "number", hozAlign: "right", headerMenu },
         {
           title: "Expiry",
           field: "expiry",
+          sorter: "date",
           formatter: "datetime",
           formatterParams: { inputFormat: "YYYY-MM-DD", outputFormat: "YYYY-MM-DD" },
           headerMenu,
@@ -160,7 +160,6 @@ const Added_Items = () => {
           formatter: (cell) => {
             const { expiry } = cell.getRow().getData();
             const daysLeft = dayjs(expiry).diff(dayjs(), "day");
-
             let label, classes;
             if (daysLeft < 0) {
               label = "Expired";
@@ -200,6 +199,15 @@ const Added_Items = () => {
       ],
     });
 
+    // Sort button logic
+    const fieldEl = document.getElementById("sort-field");
+    const dirEl = document.getElementById("sort-direction");
+    document.getElementById("sort-trigger").addEventListener("click", () => {
+      const field = fieldEl.value;
+      const dir = dirEl.value;
+      table.setSort(field, dir);
+    });
+
     return () => table.destroy();
   }, []);
 
@@ -210,6 +218,36 @@ const Added_Items = () => {
         <Navbar />
         <div className="p-8">
           <h1 className="text-2xl font-bold mb-6 text-gray-800">Added Items</h1>
+
+          {/* Sort Controls */}
+          <div className="flex items-center gap-4 mb-4">
+            <select id="sort-field" className="px-3 py-2 border border-gray-300 rounded">
+              <option value="sku">SKU</option>
+              <option value="description">Description</option>
+              <option value="uom">UOM</option>
+              <option value="shelfLife">Shelf Life</option>
+              <option value="batch">Batch</option>
+              <option value="weight">Weight</option>
+              <option value="leadTime">Lead Time</option>
+              <option value="safetyStock">Safety Stock</option>
+              <option value="currentStock">Current Stock</option>
+              <option value="expiry">Expiry</option>
+            </select>
+
+            <select id="sort-direction" className="px-3 py-2 border border-gray-300 rounded">
+              <option value="asc">Ascending</option>
+              <option value="desc">Descending</option>
+            </select>
+
+            <button
+              id="sort-trigger"
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            >
+              Sort Now
+            </button>
+          </div>
+
+          {/* Table */}
           <div
             ref={tableRef}
             className="rounded-xl overflow-hidden shadow-lg border border-gray-200"
