@@ -2,9 +2,9 @@ import { Routes, Route } from 'react-router-dom';
 
 import LogIn from './Components/LogIn/LogIn';
 import SignUp from './Components/signUp/SignUp';
-import Dashboard from './Components/Dashboard/Dashboard';
-import Inventory from './Components/inventory/inventory';
-import Reports from './Components/reports/reports';
+import Dashboard from './Components/dashboard/Dashboard';
+import Inventory from './Components/inventory/Inventory';
+import Reports from './Components/reports/Reports';
 
 import Suppliers from './Components/suppliers/suppliers';
 import OverviewSupp from './Components/suppliers/profile_Suppliers/Overview_Supp/OverviewSupp';
