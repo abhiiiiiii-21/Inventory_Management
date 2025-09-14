@@ -6,17 +6,18 @@ import Dashboard from './Components/dashboard/Dashboard';
 import Inventory from './Components/inventory/Inventory';
 import Reports from './Components/reports/Reports';
 
-import Suppliers from './Components/suppliers/suppliers';
+import Suppliers from './Components/suppliers/Suppliers';
 import OverviewSupp from './Components/suppliers/profile_Suppliers/Overview_Supp/OverviewSupp';
 import FinancialSupp from './Components/suppliers/profile_Suppliers/Financial_Supp/FinancialSup';
 import HistorySupp from './Components/suppliers/profile_Suppliers/Purchase_Supp/HistorySupp';
 
-import Orders from './Components/orders/orders';
-import ManageStore from './Components/manageStore/manage';
-import Customers from './Components/customers/customers';
+import Orders from './Components/orders/Orders';
+import ManageStore from './Components/manageStore/Manage';
+import Customers from './Components/customers/Customers';
 import Settings from './Components/settings/Settings';
+
 import Added_Items from './Components/itemMaster/added_Items/Added_Items';
-import ItemMaster from './Components/itemMaster/addItem/Item';
+import ItemMaster from './Components/itemMaster/addItem/Item'
 import AddCategory from './Components/itemMaster/addCategory/AddCat';
 import AddSubCategory from './Components/itemMaster/addSubCategory/AddSub';
 
