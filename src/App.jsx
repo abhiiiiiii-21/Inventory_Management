@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import LogIn from './Components/LogIn/LogIn';
-import SignUp from './Components/signUp/signUp';
+import SignUp from './Components/signUp/SignUp';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Inventory from './Components/inventory/inventory';
 import Reports from './Components/reports/reports';
